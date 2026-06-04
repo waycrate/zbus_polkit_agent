@@ -15,7 +15,7 @@ serde = { version = "1.0.228", features = ["derive"] }
 systemd = "0.10.1"
 libsystemd-sys = "0.9.4"
 thiserror = "2.0.18"
-zbus = "5.15.0"
+zbus = "5.16.0"
 zbus_polkit = "5.0.0"
 
 [dev-dependencies]
