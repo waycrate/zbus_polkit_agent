@@ -121,8 +121,8 @@ where
         let object_path = object_path
             .into()
             .unwrap_or("/org/freedesktop/PolicyKit1/AuthenticationAgent");
-        let conn = connection::Builder::system()?
-            .serve_at(object_path, agent)?
+        let conn = connection::Builder::system()
+            .serve_at(object_path, agent)
             .build()
             .await?;
 
