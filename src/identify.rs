@@ -3,11 +3,12 @@ use std::collections::HashMap;
 use crate::error::Error;
 use nix::unistd::{Uid, User};
 use serde::{Deserialize, Serialize};
-use zbus::zvariant::Type;
+use zbus::Type;
+
 #[derive(Debug, Serialize, Deserialize, Type)]
 pub struct Identity<'a> {
     identity_kind: &'a str,
-    identity_details: HashMap<&'a str, zbus::zvariant::Value<'a>>,
+    identity_details: HashMap<&'a str, zbus::zvariant::Variant<'a>>,
 }
 
 pub enum IdentityType {

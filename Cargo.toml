@@ -14,10 +14,10 @@ nix = { version = "0.31.3", features = ["process", "user"] }
 serde = { version = "1.0.229", features = ["derive"] }
 systemd = "0.10.1"
 libsystemd-sys = "0.9.4"
-thiserror = "2.0.20"
-zbus = "5.19.0"
-zbus_polkit = "5.1.0"
+thiserror = "2.0.21"
+zbus = "6.0.0"
+zbus_polkit = { git = "https://github.com/z-galaxy/zbus_polkit" }
 
 [dev-dependencies]
 rpassword = "7.5.4"
-tokio = { version = "1.53.1", features = ["full"] }
+tokio = { version = "1.54.1", features = ["full"] }
