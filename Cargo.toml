@@ -12,8 +12,7 @@ repository = "https://github.com/waycrate/zbus_polkit_agent"
 nix = { version = "0.31.3", features = ["process", "user"] }
 
 serde = { version = "1.0.229", features = ["derive"] }
-systemd = "0.10.1"
-libsystemd-sys = "0.9.4"
+systemd = "0.11.1"
 thiserror = "2.0.21"
 zbus = "6.0.0"
 zbus_polkit = { git = "https://github.com/z-galaxy/zbus_polkit" }

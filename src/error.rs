@@ -18,4 +18,6 @@ pub enum Error {
     IoError(#[from] std::io::Error),
     #[error("Unkownn line {0} from helper")]
     UnknownMessage(String),
+    #[error("Systemd Error")]
+    Systemd(#[from] systemd::Error),
 }

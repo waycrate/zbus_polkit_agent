@@ -1,33 +1,8 @@
-use libsystemd_sys::uid_t;
-use nix::libc::{free, strlen};
-use std::{
-    ffi::{c_char, c_void},
-    ptr,
-};
-
 use zbus_polkit::policykit1::Subject;
 
 #[derive(Debug, Clone)]
 pub struct UnixSession {
     pub session_id: String,
-}
-
-unsafe fn free_cstring(ptr: *mut c_char) -> Option<String> {
-    if ptr.is_null() {
-        return None;
-    }
-    let len = unsafe { strlen(ptr) };
-    let char_slice = unsafe { std::slice::from_raw_parts(ptr as *mut u8, len) };
-    let s = String::from_utf8_lossy(char_slice).into_owned();
-    unsafe { free(ptr as *mut c_void) };
-    Some(s)
-}
-
-pub fn get_display(uid: uid_t) -> Result<String, systemd::Error> {
-    let mut c_session: *mut c_char = ptr::null_mut();
-    systemd::ffi_result(unsafe { libsystemd_sys::login::sd_uid_get_display(uid, &mut c_session) })?;
-    let ss = unsafe { free_cstring(c_session).unwrap() };
-    Ok(ss)
 }
 
 impl UnixSession {
@@ -37,8 +12,8 @@ impl UnixSession {
         if let Ok(session_id) = systemd::login::get_session(Some(id.as_raw())) {
             return Ok(Self { session_id });
         }
-        let uid = systemd::login::get_owner_uid(Some(id.as_raw()))?;
-        let session_id = get_display(uid)?;
+        let uid = systemd::login::get_owner_uid(id.as_raw())?;
+        let session_id = systemd::login::user_primary_session(uid)?;
 
         Ok(Self { session_id })
     }
