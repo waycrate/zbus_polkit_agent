@@ -744,7 +744,7 @@ dependencies = [
 [[package]]
 name = "zbus_polkit"
 version = "6.0.0"
-source = "git+https://github.com/z-galaxy/zbus_polkit#901ffd16e9707729a00175ec974f00fb8b6205e9"
+source = "git+https://github.com/z-galaxy/zbus_polkit#70ffe05d686650ff9eeb064c5a81fb7afdf0b3de"
 dependencies = [
  "bitflags",
  "serde",
