@@ -1,4 +1,6 @@
-use zbus_polkit::policykit1::Subject;
+use crate::policykit1::Subject;
+use std::collections::HashMap;
+use zbus::OwnedVariant;
 
 #[derive(Debug, Clone)]
 pub struct UnixSession {
@@ -21,6 +23,10 @@ impl UnixSession {
 
 impl From<UnixSession> for Subject {
     fn from(val: UnixSession) -> Self {
-        Subject::new_for_unix_session(val.session_id)
+        let session_id = OwnedVariant::from(zbus::Str::from(val.session_id.as_str()));
+        Subject {
+            subject_kind: "unix-session".to_string(),
+            subject_details: HashMap::from_iter([("session-id".to_string(), session_id)]),
+        }
     }
 }

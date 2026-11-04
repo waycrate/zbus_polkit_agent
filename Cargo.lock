@@ -443,12 +443,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "static_assertions"
-version = "1.1.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "a2eb9349b6444b326872e140eb1cf5e7c522154d69e7a0ffb0fb81c06b37543f"
-
-[[package]]
 name = "syn"
 version = "2.0.119"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -719,6 +713,7 @@ dependencies = [
 name = "zbus-polkit-agent"
 version = "0.4.3"
 dependencies = [
+ "bitflags",
  "nix",
  "rpassword",
  "serde",
@@ -726,7 +721,6 @@ dependencies = [
  "thiserror",
  "tokio",
  "zbus",
- "zbus_polkit",
 ]
 
 [[package]]
@@ -739,18 +733,6 @@ dependencies = [
  "quote",
  "syn 3.0.9",
  "zbus_utils",
-]
-
-[[package]]
-name = "zbus_polkit"
-version = "6.0.0"
-source = "git+https://github.com/z-galaxy/zbus_polkit#901ffd16e9707729a00175ec974f00fb8b6205e9"
-dependencies = [
- "bitflags",
- "serde",
- "serde_repr",
- "static_assertions",
- "zbus",
 ]
 
 [[package]]

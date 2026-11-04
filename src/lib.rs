@@ -5,11 +5,11 @@ mod unixsession;
 pub use identify::*;
 use std::{collections::HashMap, marker::PhantomData};
 use zbus::connection;
-
 mod interface;
+mod policykit1;
 use interface::*;
 
-use zbus_polkit::policykit1::AuthorityProxy;
+use policykit1::AuthorityProxy;
 
 use crate::unixsession::UnixSession;
 
