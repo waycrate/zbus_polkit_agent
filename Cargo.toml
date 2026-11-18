@@ -10,7 +10,7 @@ repository = "https://github.com/waycrate/zbus_polkit_agent"
 
 [dependencies]
 bitflags = "2.13.2"
-nix = { version = "0.31.3", features = ["process", "user"] }
+nix = { version = "0.32.0", features = ["process", "user"] }
 
 serde = { version = "1.0.229", features = ["derive"] }
 systemd = "0.11.1"
